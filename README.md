@@ -93,7 +93,9 @@ git add . && git commit -m "update Readme.md"
 ---------------------------
 
 git remote add origin https://github.com/sunny9sinha/simple_dvc_demo.git
+
 git branch -M main
+
 git push origin main
 
 tox command -
