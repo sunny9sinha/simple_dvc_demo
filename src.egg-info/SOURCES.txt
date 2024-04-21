@@ -2,6 +2,10 @@ LICENSE
 README.md
 setup.py
 src/__init__.py
+src/get_data.py
+src/load_data.py
+src/split_data.py
+src/train_and_evaluate.py
 src.egg-info/PKG-INFO
 src.egg-info/SOURCES.txt
 src.egg-info/dependency_links.txt
@@ -15,3 +19,6 @@ src/models/predict_model.py
 src/models/train_model.py
 src/visualization/__init__.py
 src/visualization/visualize.py
+tests/__init__.py
+tests/conftest.py
+tests/test_config.py
