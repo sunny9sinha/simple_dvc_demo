@@ -19,7 +19,9 @@ files = [
     "dvc.yaml",
     "params.yaml",
     ".gitignore",
-    os.path.join("src","__init__.py")
+    os.path.join("src","__init__.py"),
+    os.path.join("reports", "scores.json"),
+    os.path.join("reports", "params.json")
 ]
 
 for file_ in files:
