@@ -35,15 +35,26 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v
+    - name: make build dir
+      run: |
+        mkdir -p ./build
+    - name: copy PS to build
+      run: |
+        cp -R ./prediction_service ./build
+    - name: copy webapp to build
+      run: |
+        cp -R ./webapp ./build
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: production-files
+        path: ./build
   deploy:
       needs: build
       permissions:
         contents: read
         pages: write
         id-token: write
-      environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url}}
       runs-on: ubuntu-latest
       steps:
         - name: Configure Pages
@@ -51,3 +62,6 @@ jobs:
         - name: Deploy
           id: deployment
           uses: actions/deploy-pages@v4
+          with:
+            github_token: ${{ secrets.TOKEN }}
+            publish_dir: ./build
