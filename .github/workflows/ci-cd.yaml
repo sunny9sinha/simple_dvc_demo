@@ -35,33 +35,14 @@ jobs:
     - name: Test with pytest
       run: |
         pytest -v
-    - name: make build dir
-      run: |
-        mkdir -p ./build
-    - name: copy PS to build
-      run: |
-        cp -R ./prediction_service ./build
-    - name: copy webapp to build
-      run: |
-        cp -R ./webapp ./build
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: github-pages
-        path: ./build
+
   deploy:
-      needs: build
-      permissions:
-        contents: read
-        pages: write
-        id-token: write
+    - name: Deploy to Render
+      needs: [build]
       runs-on: ubuntu-latest
       steps:
-        - name: Configure Pages
-          uses: actions/configure-pages@v4
-        - name: Deploy
-          id: deployment
-          uses: actions/deploy-pages@v4
-          with:
-            github_token: ${{ secrets.TOKEN }}
-            publish_dir: ./build
+        -name: Deploy to production
+         uses: johnbeynon/render-deploy-action@v0.0.8
+         with:
+          service-id: ${{ secrets.APP_NAME}}
+          api-key: ${{ secrets.PROD }}
