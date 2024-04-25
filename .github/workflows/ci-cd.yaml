@@ -41,8 +41,8 @@ jobs:
       needs: [build]
       runs-on: ubuntu-latest
       steps:
-        -name: Deploy to production
-         uses: johnbeynon/render-deploy-action@v0.0.8
-         with:
-          service-id: ${{ secrets.APP_NAME}}
-          api-key: ${{ secrets.PROD }}
+        - name: Deploy to production
+          uses: johnbeynon/render-deploy-action@v0.0.8
+          with:
+            service-id: ${{ secrets.APP_NAME}}
+            api-key: ${{ secrets.PROD }}
