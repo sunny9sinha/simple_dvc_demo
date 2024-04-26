@@ -124,4 +124,17 @@ python setup.py sdist bdist_wheel
 
 ---------------------------------
 
+---
+create an artifacts folder
+    mkdir artifacts
+
+mlflow server command -
+
+mlflow server \
+    --backend-store-uri sqlite:///mlflow.db \
+    --default-artifact-root ./artifacts \
+    --host 0.0.0.0 -p 1234
+
+---
+
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
